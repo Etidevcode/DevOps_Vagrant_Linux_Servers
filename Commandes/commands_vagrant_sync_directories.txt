@@ -1,0 +1,24 @@
+$ vagrant ssh
+vagrant@ubuntu-jammy:~$ logout
+
+$ ls
+
+
+$ touch text1.txt
+
+$ ls
+
+$ ls -a
+
+$ vagrant ssh
+vagrant@ubuntu-jammy:~$ cd /vagrant/
+vagrant@ubuntu-jammy:/vagrant$ ls
+Vagrantfile  text1.txt
+vagrant@ubuntu-jammy:/vagrant$ touch file{1..20}.txt
+vagrant@ubuntu-jammy:/vagrant$ ls
+vagrant@ubuntu-jammy:/vagrant$ rm -rf file*
+vagrant@ubuntu-jammy:/vagrant$ exit
+logout
+
+
+$ vagrant reload

@@ -1,0 +1,167 @@
+$ ls
+ centos/                   DevOps_Project2/   DevOps_Vagrant_Linux_Servers/   itadmin_credentials.csv
+ DevOps_CI_With_Jenkins/   DevOps_Project3/   DevOps_Variables_JSON_YAML/     ubuntu/
+ DevOps_Maven/             DevOps_Project4/   gitrepos/
+ DevOps_Project1/          DevOps_Python/    'itadmin_credentials (1).csv'
+
+$ cd ubuntu/
+
+$ ls
+Vagrantfile
+
+$ cat Vagrantfile 
+
+$ vagrant global-status
+id       name    provider   state    directory
+-------------------------------------------------------------------------
+f5ebe93  default virtualbox poweroff C:/vagrant-vms/centos
+1f6e3dc  default virtualbox poweroff C:/vagrant-vms/ubuntu
+ 
+The above shows information about all known Vagrant environments
+on this machine. This data is cached and may not be completely
+up-to-date (use "vagrant global-status --prune" to prune invalid
+entries). To interact with any of the machines, you can go to that
+directory and run Vagrant, or you can use the ID directly with
+Vagrant commands from any directory. For example:
+"vagrant destroy 1a2b3c4d"
+
+$ vagrant destroy --force
+==> default: Destroying VM and associated drives...
+
+Caplogy_Data_002@LAPTOP-ROOUAE14 MINGW64 /c/vagrant-vms/ubuntu
+$ vagrant global-status
+id       name    provider   state    directory
+-------------------------------------------------------------------------
+f5ebe93  default virtualbox poweroff C:/vagrant-vms/centos
+ 
+The above shows information about all known Vagrant environments
+on this machine. This data is cached and may not be completely
+up-to-date (use "vagrant global-status --prune" to prune invalid
+entries). To interact with any of the machines, you can go to that
+directory and run Vagrant, or you can use the ID directly with
+Vagrant commands from any directory. For example:
+"vagrant destroy 1a2b3c4d"
+
+
+$ cd ../centos
+
+$ vagrant destroy --force
+==> default: Destroying VM and associated drives...
+
+$ vagrant global-status
+id       name   provider state  directory
+--------------------------------------------------------------------
+There are no active Vagrant environments on this computer! Or,
+you haven't destroyed and recreated Vagrant environments that were
+started with an older version of Vagrant.
+
+
+$ cd ../ubuntu
+
+
+$ ls
+Vagrantfile
+
+
+$ ls -a 
+
+
+
+$ ls ~/.vagrant.d/
+
+
+$ ls
+Vagrantfile
+
+
+$ cat Vagrantfile 
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+# All Vagrant configuration is done below. The "2" in Vagrant.configure
+# configures the configuration version (we support older styles for
+# backwards compatibility). Please don't change it unless you know what
+# you're doing.
+Vagrant.configure("2") do |config|
+  # The most common configuration options are documented and commented below.
+  # For a complete reference, please see the online documentation at
+  # https://docs.vagrantup.com.
+
+  # Every Vagrant development environment requires a box. You can search for
+  # boxes at https://vagrantcloud.com/search.
+  config.vm.box = "ubuntu/jammy64"
+
+  # Disable automatic box update checking. If you disable this, then
+  # boxes will only be checked for updates when the user runs
+  # `vagrant box outdated`. This is not recommended.
+  # config.vm.box_check_update = false
+
+  # Create a forwarded port mapping which allows access to a specific port
+  # within the machine from a port on the host machine. In the example below,
+  # accessing "localhost:8080" will access port 80 on the guest machine.
+  # NOTE: This will enable public access to the opened port
+  # config.vm.network "forwarded_port", guest: 80, host: 8080
+
+  # Create a forwarded port mapping which allows access to a specific port
+  # within the machine from a port on the host machine and only allow access
+  # via 127.0.0.1 to disable public access
+  # config.vm.network "forwarded_port", guest: 80, host: 8080, host_ip: "127.0.0.1"
+
+  # Create a private network, which allows host-only access to the machine
+  # using a specific IP.
+   config.vm.network "private_network", ip: "192.168.56.14"
+
+  # Create a public network, which generally matched to bridged network.
+  # Bridged networks make the machine appear as another physical device on
+  # your network.
+   config.vm.network "public_network"
+
+  # Share an additional folder to the guest VM. The first argument is
+  # the path on the host to the actual folder. The second argument is
+  # the path on the guest to mount the folder. And the optional third
+  # argument is a set of non-required options.
+  # config.vm.synced_folder "../data", "/vagrant_data"
+
+  # Disable the default share of the current code directory. Doing this
+  # provides improved isolation between the vagrant box and your host
+  # by making sure your Vagrantfile isn't accessible to the vagrant box.
+  # If you use this you may want to enable additional shared subfolders as
+  # shown above.
+  # config.vm.synced_folder ".", "/vagrant", disabled: true
+
+  # Provider-specific configuration so you can fine-tune various
+  # backing providers for Vagrant. These expose provider-specific options.
+  # Example for VirtualBox:
+  #
+   config.vm.provider "virtualbox" do |vb|
+  #   # Display the VirtualBox GUI when booting the machine
+  #   vb.gui = true
+  #
+  #   # Customize the amount of memory on the VM:
+     vb.memory = "1600"
+         vb.cpus = "2"
+   end
+  #
+  # View the documentation for the provider you are using for more
+  # information on available options.
+
+  # Enable provisioning with a shell script. Additional provisioners such as
+  # Ansible, Chef, Docker, Puppet and Salt are also available. Please see the
+  # documentation for more information about their specific syntax and use.
+  # config.vm.provision "shell", inline: <<-SHELL
+  #   apt-get update
+  #   apt-get install -y apache2
+  # SHELL
+end
+
+
+$ vagrant up
+
+
+
+$ vagrant ssh
+
+
+vagrant@ubuntu-jammy:~$ free -m
+
+vagrant@ubuntu-jammy:~$ cat /proc/cpuinfo

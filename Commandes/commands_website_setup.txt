@@ -1,0 +1,84 @@
+# https://www.tooplate.com/zip-templates/2135_mini_finance.zip
+
+
+
+
+$ cd 
+
+$ vagrant global-status
+
+$ mkdir  /c/vagrant-vms/finance
+
+$ cd /c/vagrant-vms/finance/
+
+
+$ vagrant box list
+bento/ubuntu-22.04                (virtualbox, 202303.13.0)
+centos/7                          (virtualbox, 2004.01)
+
+eurolinux-vagrant/centos-stream-9 (virtualbox, 9.0.28)
+geerlingguy/centos7               (virtualbox, 1.2.27)
+ubuntu/bionic64                   (virtualbox, 20230607.0.0)
+ubuntu/focal64                    (virtualbox, 20230719.0.0)
+ubuntu/jammy64                    (virtualbox, 20230720.0.0)
+
+
+$ vagrant init eurolinux-vagrant/centos-stream-9
+
+$ vim Vagrantfile
+
+
+$ vagrant up
+
+$ vagrant ssh
+
+[vagrant@pc-45 ~]$ sudo -i
+[root@pc-45 ~]# vi /etc/hostname
+[root@pc-45 ~]# hostname finance
+[root@pc-45 ~]# exit
+logout
+[vagrant@pc-45 ~]$ exit
+logout
+
+
+$ vagrant ssh
+
+[vagrant@finance ~]$ sudo -i
+[root@finance ~]# cat /etc/os-release 
+[root@finance ~]# yum install httpd wget vim unzip zip -y
+
+[root@finance ~]# systemctl start httpd
+[root@finance ~]# systemctl enable httpd
+Created symlink /etc/systemd/system/multi-user.target.wants/httpd.service → /usr/lib/systemd/system/httpd.service.
+[root@finance ~]# ip addr show
+
+[root@finance ~]# cd /var/www/html/
+[root@finance html]# ls
+[root@finance html]# vim index.html
+[root@finance html]# systemctl restart httpd
+[root@finance html]# cd /tmp/
+[root@finance tmp]# wget https://www.tooplate.com/zip-templates/2135_mini_finance.zip
+
+
+[root@finance tmp]# ls
+[root@finance tmp]# unzip 2135_mini_finance.zip 
+[root@finance tmp]# ls
+[root@finance tmp]# cd 2135_mini_finance/
+[root@finance 2135_mini_finance]# pwd
+/tmp/2135_mini_finance
+[root@finance 2135_mini_finance]# ls
+[root@finance 2135_mini_finance]# cp -r * /var/www/html
+cp: overwrite '/var/www/html/index.html'? y
+[root@finance 2135_mini_finance]# ls /var/www/html/
+[root@finance 2135_mini_finance]# systemctl restart httpd
+[root@finance 2135_mini_finance]# cd
+[root@finance ~]# systemctl status httpd
+[root@finance ~]# ls /var/www/html/
+[root@finance ~]# systemctl status firewalld
+[root@finance ~]# systemctl stop firewalld
+[root@finance ~]# systemctl disable firewalld
+[root@finance ~]# systemctl status httpd
+[root@finance ~]# ls /var/www/html/
+[root@finance ~]# ip addr show
+[root@finance ~]# ^C
+[root@finance ~]#

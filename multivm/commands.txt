@@ -1,0 +1,27 @@
+$ cd multivm/
+
+$ ls -a
+
+$ rm -rf .vagrant
+
+$ ls
+
+$ vagrant up
+
+$ vagrant ssh web01
+
+vagrant@web01:~$ hostname
+
+vagrant@web01:~$ exit
+
+
+$ vagrant halt web01
+
+$ vagrant destroy web01
+
+$ vagrant halt web02
+
+$ vagrant 
+
+$ vagrant destroy --force
+

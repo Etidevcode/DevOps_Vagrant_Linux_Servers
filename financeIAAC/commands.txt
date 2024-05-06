@@ -1,0 +1,9 @@
+$ ls
+
+$ cd financeIAAC/
+
+$ ls
+
+$ vagrant up
+
+$ vagrant destroy

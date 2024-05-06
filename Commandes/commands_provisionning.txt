@@ -1,0 +1,9 @@
+cd ../ubuntu/
+tail Vagrantfile
+vagrant relaod --provision
+vagrant reload --provision
+head Vagrantfile
+cat Vagrantfile
+$ vagrant destroy --force
+$ cd ../centos/
+$ vagrant destroy --force
